@@ -38,7 +38,8 @@ release_dates <- tibble::tribble(
   ~version, ~release_date,
   "v1.0.1", as.Date("2025-02-11"),
   "v1.0.2", as.Date("2025-06-23"),
-  "v1.0.3", as.Date("2026-02-22")
+  "v1.0.3", as.Date("2026-02-22"),
+  "v1.0.4", as.Date("2026-06-15")
 )
 
 

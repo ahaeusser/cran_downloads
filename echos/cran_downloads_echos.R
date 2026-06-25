@@ -1,7 +1,6 @@
 
 # Download statistics for the R package {echos} ################################
 
-
 # Setup ########################################################################
 
 # Load libraries ===============================================================
@@ -317,8 +316,6 @@ top_download_days <- downloads |>
 # Label positions ==============================================================
 
 daily_label_y <- max(downloads$downloads, na.rm = TRUE) * 0.95
-cumulative_label_nudge_y <- max(downloads$cumulative_downloads, na.rm = TRUE) * 0.04
-total_label_nudge_y <- -max(downloads$cumulative_downloads, na.rm = TRUE) * 0.05
 
 
 # Reporting tables #############################################################
@@ -553,7 +550,10 @@ p_daily <- p_daily +
 
 # Base plot --------------------------------------------------------------------
 
-p_cumulative <- ggplot(downloads, aes(x = date, y = cumulative_downloads))
+p_cumulative <- ggplot(
+  downloads,
+  aes(x = date, y = cumulative_downloads)
+)
 
 # Line -------------------------------------------------------------------------
 
@@ -561,38 +561,6 @@ p_cumulative <- p_cumulative +
   geom_line(
     color = col_main,
     linewidth = 1
-  )
-
-# Release labels ---------------------------------------------------------------
-
-p_cumulative <- p_cumulative +
-  geom_vline(
-    data = release_points,
-    aes(xintercept = release_date),
-    linetype = "dotted",
-    color = "grey40",
-    linewidth = 0.6
-  )
-
-p_cumulative <- p_cumulative +
-  geom_point(
-    data = release_points,
-    aes(x = release_date, y = cumulative_downloads),
-    color = "grey30",
-    size = 2
-  )
-
-p_cumulative <- p_cumulative +
-  geom_label(
-    data = release_points,
-    aes(
-      x = release_date,
-      y = cumulative_downloads,
-      label = release_label
-    ),
-    nudge_y = cumulative_label_nudge_y,
-    size = 3.1,
-    label.padding = unit(0.15, "lines")
   )
 
 # Total label ------------------------------------------------------------------
@@ -608,10 +576,8 @@ p_cumulative <- p_cumulative +
   geom_label(
     data = last_cumulative_observation,
     aes(label = paste0("Total: ", comma(cumulative_downloads))),
-    nudge_x = -20,
-    nudge_y = total_label_nudge_y,
-    hjust = 1,
-    vjust = 1,
+    hjust = 1.1,
+    vjust = -0.6,
     label.padding = unit(0.2, "lines")
   )
 
@@ -625,13 +591,13 @@ p_cumulative <- p_cumulative +
 
 p_cumulative <- p_cumulative +
   scale_x_date(
-    expand = expansion(mult = c(0.02, 0.08))
+    expand = expansion(mult = c(0.02, 0.05))
   )
 
 p_cumulative <- p_cumulative +
   labs(
     title = "(b) Cumulative downloads",
-    subtitle = "Releases and final total",
+    subtitle = "Adjusted cumulative downloads",
     x = NULL,
     y = NULL
   )

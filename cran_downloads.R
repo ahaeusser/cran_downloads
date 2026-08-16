@@ -544,6 +544,22 @@ p_downloads <- p_daily /
   (p_cumulative | p_daily_histogram) /
   (p_monthly | p_release_impact)
 
+p_downloads <- p_downloads +
+  plot_annotation(
+    title = paste0(
+      "CRAN Downloads {",
+      package_name,
+      "}"
+    ),
+    theme = theme(
+      plot.title = element_text(
+        size = 20,
+        face = "bold",
+        hjust = 0
+      )
+    )
+  )
+
 p_downloads
 
 

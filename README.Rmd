@@ -11,9 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# CRAN download analysis
-
-## R package {echos}
+# CRAN Download Analysis
 
 ```{r downloads-figure, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("figure_downloads_echos.png")

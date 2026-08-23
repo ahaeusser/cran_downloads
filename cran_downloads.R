@@ -47,6 +47,40 @@ release_dates <- tibble::tribble(
 )
 
 
+# # Package specifics -----------------------------------------------------------
+# 
+# package_name <- "echos"
+# package_name <- "tscv"
+# 
+# if (package_name == "echos") {
+#   
+#   start_date <- as.Date("2025-02-01")
+#   
+#   release_dates <- tibble::tribble(
+#     ~version, ~release_date,
+#     "v1.0.1", as.Date("2025-02-11"),
+#     "v1.0.2", as.Date("2025-06-23"),
+#     "v1.0.3", as.Date("2026-02-22"),
+#     "v1.0.4", as.Date("2026-06-15")
+#   )
+#   
+# } else if (package_name == "tscv") {
+#   
+#   start_date <- as.Date("2026-05-13")
+#   
+#   release_dates <- tibble::tribble(
+#     ~version, ~release_date,
+#     "v1.0.0", as.Date("2026-05-13")
+#   )
+#   
+# } else {
+#   
+#   stop("Unknown package: ", package_name)
+# }
+# 
+# end_date <- Sys.Date()
+
+
 # Data preparation ============================================================
 
 # Download data ---------------------------------------------------------------
@@ -60,8 +94,7 @@ downloads <- adj_cran_downloads(
 downloads <- downloads |>
   transmute(
     date = as.Date(date),
-    downloads = pmax(adjusted_downloads, 0)
-  ) |>
+    downloads = pmax(adjusted_downloads, 0)) |>
   arrange(date)
 
 
@@ -74,8 +107,7 @@ downloads <- downloads |>
       downloads,
       k = rolling_window,
       fill = NA_real_,
-      align = "right"
-    ),
+      align = "right"),
     cumulative_downloads = cumsum(downloads)
   )
 
@@ -111,8 +143,7 @@ monthly_downloads <- downloads |>
   group_by(month) |>
   summarise(
     downloads = sum(downloads, na.rm = TRUE),
-    .groups = "drop"
-  ) |>
+    .groups = "drop") |>
   arrange(month)
 
 monthly_downloads <- monthly_downloads |>
@@ -141,8 +172,7 @@ monthly_downloads <- monthly_downloads |>
 release_points <- release_dates |>
   filter(
     release_date >= data_start_date,
-    release_date <= data_end_date
-  ) |>
+    release_date <= data_end_date) |>
   mutate(
     release_label = paste0(
       version,
@@ -166,18 +196,13 @@ release_impact <- release_impact |>
     downloads_before = sum(
       downloads$downloads[
         downloads$date >= release_date - days(release_window_days) &
-          downloads$date < release_date
-      ],
-      na.rm = TRUE
-    ),
+          downloads$date < release_date],
+      na.rm = TRUE),
     downloads_after = sum(
       downloads$downloads[
         downloads$date > release_date &
-          downloads$date <= release_date + days(release_window_days)
-      ],
-      na.rm = TRUE
-    )
-  ) |>
+          downloads$date <= release_date + days(release_window_days)],
+      na.rm = TRUE)) |>
   ungroup()
 
 release_impact <- release_impact |>
@@ -185,8 +210,7 @@ release_impact <- release_impact |>
     change_pct = if_else(
       downloads_before > 0,
       downloads_after / downloads_before - 1,
-      NA_real_
-    ),
+      NA_real_),
     before_label = comma(downloads_before),
     after_label = comma(downloads_after)
   )
@@ -248,8 +272,7 @@ p_daily <- p_daily +
     aes(
       x = release_date,
       y = daily_label_y,
-      label = release_label
-    ),
+      label = release_label),
     size = 3.1,
     vjust = 1,
     label.padding = grid::unit(0.15, "lines")
@@ -265,10 +288,9 @@ p_daily <- p_daily +
   labs(
     title = "(a) Daily downloads",
     subtitle = paste0(
-      "Adjusted values and ",
+      "Adjusted daily downloads and ",
       rolling_window,
-      "-day average"
-    ),
+      "-day average"),
     x = NULL,
     y = NULL
   )
@@ -420,7 +442,7 @@ p_daily_histogram <- p_daily_histogram +
 p_daily_histogram <- p_daily_histogram +
   labs(
     title = "(c) Distribution",
-    subtitle = "Adjusted downloads",
+    subtitle = "Adjusted daily downloads",
     x = "Adjusted daily downloads",
     y = "Number of days"
   )
@@ -461,7 +483,7 @@ p_monthly <- p_monthly +
 p_monthly <- p_monthly +
   labs(
     title = "(d) Monthly downloads",
-    subtitle = "Adjusted totals and month-over-month change",
+    subtitle = "Monthly totals and month-over-month change",
     x = NULL,
     y = NULL
   )
@@ -547,9 +569,13 @@ p_downloads <- p_daily /
 p_downloads <- p_downloads +
   plot_annotation(
     title = paste0(
-      "CRAN Downloads {",
+      "CRAN Downloads for {",
       package_name,
-      "}"
+      "} (",
+      format(start_date, "%b %Y"),
+      "–",
+      format(end_date, "%b %Y"),
+      ")"
     ),
     theme = theme(
       plot.title = element_text(

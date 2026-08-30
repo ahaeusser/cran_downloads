@@ -572,9 +572,9 @@ p_downloads <- p_downloads +
       "CRAN Downloads for {",
       package_name,
       "} (",
-      format(start_date, "%b %Y"),
+      start_date,
       "–",
-      format(end_date, "%b %Y"),
+      end_date,
       ")"
     ),
     theme = theme(

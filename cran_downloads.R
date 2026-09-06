@@ -30,55 +30,39 @@ col_light <- "lightsteelblue"
 figure_width <- 17
 figure_height <- 17
 
-
 # Package specifics -----------------------------------------------------------
 
 package_name <- "echos"
-
-start_date <- as.Date("2025-02-01")
-end_date <- Sys.Date()
-
-release_dates <- tibble::tribble(
-  ~version, ~release_date,
-  "v1.0.1", as.Date("2025-02-11"),
-  "v1.0.2", as.Date("2025-06-23"),
-  "v1.0.3", as.Date("2026-02-22"),
-  "v1.0.4", as.Date("2026-06-15")
-)
-
-
-# # Package specifics -----------------------------------------------------------
-# 
-# package_name <- "echos"
 # package_name <- "tscv"
-# 
-# if (package_name == "echos") {
-#   
-#   start_date <- as.Date("2025-02-01")
-#   
-#   release_dates <- tibble::tribble(
-#     ~version, ~release_date,
-#     "v1.0.1", as.Date("2025-02-11"),
-#     "v1.0.2", as.Date("2025-06-23"),
-#     "v1.0.3", as.Date("2026-02-22"),
-#     "v1.0.4", as.Date("2026-06-15")
-#   )
-#   
-# } else if (package_name == "tscv") {
-#   
-#   start_date <- as.Date("2026-05-13")
-#   
-#   release_dates <- tibble::tribble(
-#     ~version, ~release_date,
-#     "v1.0.0", as.Date("2026-05-13")
-#   )
-#   
-# } else {
-#   
-#   stop("Unknown package: ", package_name)
-# }
-# 
-# end_date <- Sys.Date()
+
+if (package_name == "echos") {
+
+  start_date <- as.Date("2025-02-01")
+
+  release_dates <- tibble::tribble(
+    ~version, ~release_date,
+    "v1.0.1", as.Date("2025-02-11"),
+    "v1.0.2", as.Date("2025-06-23"),
+    "v1.0.3", as.Date("2026-02-22"),
+    "v1.0.4", as.Date("2026-06-15")
+  )
+
+} else if (package_name == "tscv") {
+
+  start_date <- as.Date("2026-05-13")
+
+  release_dates <- tibble::tribble(
+    ~version, ~release_date,
+    "v1.0.0", as.Date("2026-05-13"),
+    "v1.0.1", as.Date("2026-09-02")
+  )
+
+} else {
+
+  stop("Unknown package: ", package_name)
+}
+
+end_date <- Sys.Date()
 
 
 # Data preparation ============================================================

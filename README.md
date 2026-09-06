@@ -17,3 +17,5 @@ based on downloads recorded by the RStudio CRAN mirror rather than as
 complete counts across all CRAN mirrors.
 
 <img src="figure_downloads_echos.png" alt="" width="100%" style="display: block; margin: auto;" />
+
+<img src="figure_downloads_tscv.png" alt="" width="100%" style="display: block; margin: auto;" />

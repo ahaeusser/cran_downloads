@@ -33,7 +33,7 @@ figure_height <- 17
 # Package specifics -----------------------------------------------------------
 
 package_name <- "echos"
-# package_name <- "tscv"
+package_name <- "tscv"
 
 if (package_name == "echos") {
 
@@ -49,7 +49,7 @@ if (package_name == "echos") {
 
 } else if (package_name == "tscv") {
 
-  start_date <- as.Date("2026-05-13")
+  start_date <- as.Date("2026-05-01")
 
   release_dates <- tibble::tribble(
     ~version, ~release_date,

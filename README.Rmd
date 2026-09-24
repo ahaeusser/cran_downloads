@@ -17,13 +17,13 @@ Download statistics are based on the [`adjustedcranlogs`](https://CRAN.R-project
 
 These adjustments provide a more representative indication of actual package usage and make download trends easier to interpret. The resulting statistics should nevertheless be understood as estimates based on downloads recorded by the RStudio CRAN mirror rather than as complete counts across all CRAN mirrors.
 
-## {echos}
+## 📦 R package {echos}
 
 ```{r downloads-figure-echos, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("figure_downloads_echos.png")
 ```
 
-## {tscv}
+## 📦 R package {tscv}
 
 ```{r downloads-figure-tscv, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("figure_downloads_tscv.png")

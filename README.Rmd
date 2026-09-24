@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Download Statistics
+# 📈 Download Statistics
 
 Download statistics are based on the [`adjustedcranlogs`](https://CRAN.R-project.org/package=adjustedcranlogs) package rather than on raw CRAN download counts. The package uses data from the RStudio CRAN mirror and adjusts the observed downloads for systematic effects that can inflate raw counts, such as automated CRAN-wide downloads and re-download spikes following package updates.
 

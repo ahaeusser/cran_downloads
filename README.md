@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Download Statistics
+# 📈 Download Statistics
 
 Download statistics are based on the
 [`adjustedcranlogs`](https://CRAN.R-project.org/package=adjustedcranlogs)

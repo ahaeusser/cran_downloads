@@ -576,7 +576,7 @@ p_downloads
 # Save figure =================================================================
 
 output_file <- paste0(
-  "figure_downloads_",
+  "downloads_",
   package_name,
   ".png"
 )

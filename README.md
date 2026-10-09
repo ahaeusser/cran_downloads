@@ -16,10 +16,10 @@ resulting statistics should nevertheless be understood as estimates
 based on downloads recorded by the RStudio CRAN mirror rather than as
 complete counts across all CRAN mirrors.
 
-## 📦 R package {echos}
+## <img src="figures/logo_echos.png" alt="echos" width="30" style="vertical-align: middle;"> R package {echos}
 
-<img src="figure_downloads_echos.png" alt="" width="100%" style="display: block; margin: auto;" />
+<img src="figures/downloads_echos.png" alt="" width="100%" style="display: block; margin: auto;" />
 
-## 📦 R package {tscv}
+## <img src="figures/logo_tscv.png" alt="tscv" width="30" style="vertical-align: middle;"> R package {tscv}
 
-<img src="figure_downloads_tscv.png" alt="" width="100%" style="display: block; margin: auto;" />
+<img src="figures/downloads_tscv.png" alt="" width="100%" style="display: block; margin: auto;" />

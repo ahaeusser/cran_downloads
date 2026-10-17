@@ -295,6 +295,8 @@ p_cumulative <- ggplot(
 
 p_cumulative <- p_cumulative +
   geom_area_pattern(
+    stat = "identity",
+    position = "identity",
     pattern = "gradient",
     fill = "#00000000",
     colour = NA,
